@@ -23,7 +23,8 @@ public class RedisConnectionProperty {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    private class Detail {
+
+    private static class Detail {
         private String host;
         private Integer port;
         private String password;

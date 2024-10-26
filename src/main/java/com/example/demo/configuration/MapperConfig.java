@@ -1,5 +1,6 @@
 package com.example.demo.configuration;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -10,16 +11,13 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import org.msgpack.jackson.dataformat.MessagePackFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.github.dozermapper.core.Mapper;
-import org.msgpack.jackson.dataformat.MessagePackFactory;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
 @Configuration
 public class MapperConfig {
@@ -39,11 +37,6 @@ public class MapperConfig {
                 .registerModule(new JavaTimeModule());
 
         return mapper;
-    }
-
-    @Bean
-    public Mapper mapper() {
-        return DozerBeanMapperBuilder.buildDefault();
     }
 
     @Bean
